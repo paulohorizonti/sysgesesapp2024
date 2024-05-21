@@ -1,4 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using SysGeSeApp2024.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+builder.Services.AddDbContext<SysGeseDbContext>(options =>
+{
+    options.UseMySQL(builder.Configuration.GetConnectionString("SysGeseApp"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
+});
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
