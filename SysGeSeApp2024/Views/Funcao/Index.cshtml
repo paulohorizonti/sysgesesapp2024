@@ -17,7 +17,7 @@
             <div class="card-body prn-card-geral">
                 <div class="container-fluid prn-continer-geral">
                     @await Html.PartialAsync("~/Views/Acoes/Mensagens.cshtml")
-                    <div class="row g-0">
+                    <div class="row g-0 border-bottom">
                         <div class="form-group col-md-4">
                             <label asp-for="Descricao" class="form-label">Perfil</label>
                             <div class="input-group input-group-sm">
@@ -27,6 +27,11 @@
                             </div>
                         </div>
                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12">
+                            <partial name="_TabelaFuncaoPrincipal" model="Model.Funcoes" />
+                        </div>
                     </div>
 
                 </div>
