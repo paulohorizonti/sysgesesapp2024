@@ -4,36 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace SysGeSeApp2024.Models
 {
     [Table("FUNCAO")]
-    public class Funcao
-    {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("ID")]
-        public int Id { get; set; }
+    public class Funcao : Entity
+    {       
 
         [Column("DESCRICAO")]
         public string Descricao { get; set; }
-
-
-        [Column("STATUS")]
-        public byte? Status { get; set; }
-
-
-        [Column("DATA_CAD")]
-        public DateTime? DataCad { get; set; }
-
-
-        [Column("DATA_ALT")]
-        public DateTime? DataAlt { get; set; }
-
-        public string? DataCadTexto
-        {
-            get { return DataCad?.ToShortDateString(); }
-        }
-
-        public string? DataAltTexto
-        {
-            get { return DataAlt?.ToShortDateString(); }
-        }
+                
 
     }
 }

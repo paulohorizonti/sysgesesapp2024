@@ -1,8 +1,8 @@
 ﻿namespace SysGeSeApp2024.Models.ViewModel
 {
-    public class FuncaoListViewModel
+    public class FuncaoListViewModel : BaseListViewModel
     {
-        public FuncaoListViewModel(List<FuncaoViewModel>? funcoes, int totalItens)
+        public FuncaoListViewModel(List<FuncaoViewModel>? funcoes, int totalItens, int paginaAtual, int qtdItensPagina) : base(totalItens, paginaAtual, qtdItensPagina)
         {
             Funcoes = funcoes;
             TotalItens = totalItens;

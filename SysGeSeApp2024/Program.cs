@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using SysGeSeApp2024.Data;
+using SysGeSeApp2024.Interfaces;
+using SysGeSeApp2024.Repositorys;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddScoped<IFuncaoRepository, FuncaoRepository>();
 
 builder.Services.AddDbContext<SysGeseDbContext>(options =>
 {

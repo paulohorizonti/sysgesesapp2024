@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SysGeSeApp2024.Models;
 using System;
 
 namespace SysGeSeApp2024.Data

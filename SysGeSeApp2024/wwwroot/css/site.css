@@ -20,3 +20,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/**Alterações pontuais*/
+.prn-cardposition {
+    margin-top: -25px !important;
+}
+
+.prn-card-geral {
+    --bs-card-spacer-y: 0.5rem !important;
+    --bs-card-spacer-x: 0.5rem !important;
+}
+.prn-continer-geral {
+    --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0 !important;
+}
+.prn-fundo {
+    /* Background pattern from Toptal Subtle Patterns */
+
+    background-image: url("/lib/Img/logo_sistema.png") !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+

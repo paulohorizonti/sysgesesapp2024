@@ -1,0 +1,45 @@
+﻿@using SysGeSeApp2024.Models.ViewModel
+@model FuncaoListViewModel
+@{
+    ViewBag.Title = "Funcao";
+}
+<form asp-controller="Perfil" asp-action="index">
+
+    <div class="row g-0 pt-1">
+        <div class="card prn-cardposition">
+            <div class="card-header">
+                <span class="fw-medium">Cadastro de FUNÇÕES</span>
+                <a class="float-end  btn btn-outline-warning btn-sm ml-2" onclick="limparInputs()"><i class="fa-duotone fa-broom"></i> Limpar</a>
+
+                <a class="float-end  btn btn-outline-primary btn-sm" onclick="chamarIncluir()"><i class="fa-duotone fa-circle-plus"></i> Novo</a>
+
+            </div>
+            <div class="card-body prn-card-geral">
+                <div class="container-fluid prn-continer-geral">
+                    @await Html.PartialAsync("~/Views/Acoes/Mensagens.cshtml")
+                    <div class="row g-0">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Descricao" class="form-label">Perfil</label>
+                            <div class="input-group input-group-sm">
+                                <input asp-for="Descricao" class="form-control" placeholder="Digite a DESCRIÇÃO" data-val="True" onkeyup="maiuscula(this);" />
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa-duotone fa-magnifying-glass"></i></button>
+
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                </div>
+
+            </div>
+            <!--fim card-body-->
+
+        </div>
+        
+
+
+
+    </div>
+
+    
+</form>
