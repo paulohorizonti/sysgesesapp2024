@@ -20,7 +20,10 @@ namespace SysGeSeApp2024.Repositorys
             _debSet.Add(entity);
             await SaveChanges();
         }
-
+        public virtual async Task<List<TEntity>> ObterTodos()
+        {
+            return await _debSet.ToListAsync();
+        }
 
         public virtual async Task Atualizar(TEntity entity)
         {

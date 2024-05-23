@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using SysGeSeApp2024.Models.Enums;
 
 namespace SysGeSeApp2024.Models
 {
@@ -8,8 +9,9 @@ namespace SysGeSeApp2024.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("ID")]
         public int Id { get; set; }
+
         [Column("STATUS")]
-        public byte? Status { get; set; }
+        public sbyte? Status { get; set; }
 
 
         [Column("DATA_CAD")]

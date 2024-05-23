@@ -5,6 +5,8 @@ namespace SysGeSeApp2024.Interfaces
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {
         Task<TEntity> ObterPorId(long id);
+
+        Task<List<TEntity>> ObterTodos();
         Task Adicionar(TEntity entity);
 
         Task Atualizar(TEntity entity);

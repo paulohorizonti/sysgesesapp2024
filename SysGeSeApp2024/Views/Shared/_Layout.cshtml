@@ -374,13 +374,23 @@
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
+    <script>
+        $(function () {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+            // $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
     <script src="~/lib/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/lib/sb-admin/js/sb-admin-2.js"></script>
+
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

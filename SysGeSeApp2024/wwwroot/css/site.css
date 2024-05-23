@@ -43,3 +43,26 @@ body {
     background-position: center;
 }
 
+.prn-font-card-header {
+    color: #1c1c1c !important;
+    font-size: 1.1rem !important;
+    font-weight: 600;
+}
+.prn-border-columns {
+    border-right: 0.5px solid #ccc !important;
+}
+
+.prn-border-columns-left {
+    border-left: 0.5px solid #ccc !important;
+}
+.prn-font-table-header {
+    background-color: #063970;
+    color: #fff !important;
+}
+
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #063970 !important;
+}
