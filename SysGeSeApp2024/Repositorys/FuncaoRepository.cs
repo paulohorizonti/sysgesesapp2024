@@ -28,7 +28,7 @@ namespace SysGeSeApp2024.Repositorys
             int qtdTotalItens = await query.CountAsync();
             
             var lista = await query.
-               OrderBy(p => p.Descricao).
+               OrderBy(p => p.Id).
                Skip(paginaAtual * qtdItensPagina).
                Take(qtdItensPagina).ToListAsync();
 

@@ -12,7 +12,7 @@
             <a asp-controller="Funcao" asp-action="Incluir" class="float-end  btn btn-outline-primary btn-sm"><i class="fa-duotone fa-circle-plus"></i> Novo</a>
         </div>
 
-        <div class="card-body">
+        <div class="card-body p-2">
             <div class="row">
                 @await Html.PartialAsync("~/Views/Acoes/Mensagens.cshtml")
             </div>
@@ -46,7 +46,7 @@
 
                     </ul>
 
-                    <button type="submit" class="float-end btn mr-1 btn-outline-warning  btn-sm"><i class="fa-duotone fa-broom"></i>&nbsp;Limpar</button>
+                    <button onclick="limparInputs()" class="float-end btn mr-1 btn-outline-warning  btn-sm"><i class="fa-duotone fa-broom"></i>&nbsp;Limpar</button>
                 </div>
             </div>
             <div class="row mt-2">

@@ -34,5 +34,23 @@ namespace SysGeSeApp2024.Controllers
             return View(vm);
             
         }
+
+        public async Task<IActionResult> AtivarDesativar(int id)
+        {
+            var obj = await _funcaoRepository.ObterPorId(id);
+
+            obj.Status = (sbyte?)((obj.Status == 1) ? 2 : 1);
+
+            try
+            {
+                _funcaoRepository.Atualizar(obj);
+                return RedirectToAction("Index");
+            }
+            catch(Exception)
+            {
+                TempData["Erro"] = "Não foi possível concluír a solicitação, tente novamente";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

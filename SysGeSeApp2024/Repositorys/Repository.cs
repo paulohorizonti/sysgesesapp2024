@@ -36,7 +36,7 @@ namespace SysGeSeApp2024.Repositorys
             throw new NotImplementedException();
         }
 
-        public virtual async Task<TEntity> ObterPorId(long id)
+        public virtual async Task<TEntity> ObterPorId(int id)
         {
             return await _debSet.FindAsync(id);
         }

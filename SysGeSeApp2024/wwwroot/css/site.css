@@ -55,6 +55,18 @@ body {
 .prn-border-columns-left {
     border-left: 0.5px solid #ccc !important;
 }
+
+
+
+.prn-border-columns-theader {
+    border-right: 0.5px solid #063970 !important;
+}
+
+.prn-border-columns-theader-left {
+    border-left: 0.5px solid #063970 !important;
+}
+
+
 .prn-font-table-header {
     background-color: #063970;
     color: #fff !important;
