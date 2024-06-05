@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using SysGeSeApp2024.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace SysGeSeApp2024.Models.ViewModel
 {
@@ -18,10 +19,10 @@ namespace SysGeSeApp2024.Models.ViewModel
         public int TotalItens { get; set; }
         public sbyte? Status { get; set; }
 
-       public string Func { get; set; }
-        public List<FuncaoViewModel>? Funcoes { get; set; }
 
-        public List<Funcao> ListaFunc { get; set; }
+       public List<FuncaoViewModel>? Funcoes { get; set; }
+
+       
         
        
     }
@@ -29,14 +30,15 @@ namespace SysGeSeApp2024.Models.ViewModel
     {
 
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "O campo NOME é obrigatório.")]
         public string Descricao { get; set; }
 
         public sbyte? Status { get; set; }
         public string? DataCad { get; set; }
         public string? DataAlt { get; set; }
 
-        public string Func { get; set; }
-        public List<Funcao> ListaFunc { get; set; }
+     
 
 
 

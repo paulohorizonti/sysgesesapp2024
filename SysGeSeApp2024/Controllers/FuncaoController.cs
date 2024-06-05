@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SysGeSeApp2024.Converters;
 using SysGeSeApp2024.Interfaces;
-using SysGeSeApp2024.Models.Enums;
+using SysGeSeApp2024.Models;
 using SysGeSeApp2024.Models.ViewModel;
 
 namespace SysGeSeApp2024.Controllers
@@ -26,20 +26,39 @@ namespace SysGeSeApp2024.Controllers
 
         public async Task<IActionResult> Incluir()
         {
-            var lista = await _funcaoRepository.ObterTodos();
 
-            FuncaoViewModel vm = new FuncaoViewModel();
-            vm.ListaFunc = lista;
-
-            return View(vm);
+            var funcaoViewModel = FuncaoConverter.ToViewModel(new Funcao());
+         
+            return View(funcaoViewModel);
             
         }
+        [HttpPost]
+        public async Task<IActionResult>Incluir(FuncaoViewModel? funcaoVM)
+        {
+            if(ModelState.IsValid && funcaoVM != null)
+            {
+                var funcaoNova = FuncaoConverter.ToModel(funcaoVM);
+                try
+                {
+                    await _funcaoRepository.Adicionar(funcaoNova);
+                    TempData["Success"] = "Função cadastrada com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Houve um erro ao adicionar o usuário, tente novamente";
+                    return RedirectToAction("Index");
+                }
 
+            }
+            return View(funcaoVM);
+        }
+        
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _funcaoRepository.ObterPorId(id);
 
-            obj.Status = (sbyte?)((obj.Status == 1) ? 2 : 1);
+            obj.Status = (sbyte?)((obj.Status == 1) ? 0 : 1);
 
             try
             {

@@ -11,7 +11,7 @@ namespace SysGeSeApp2024.Converters
             return new FuncaoViewModel
             {
                 Id = funcao.Id,
-                Descricao = funcao.Descricao.ToUpper(),
+                Descricao = funcao.Descricao,
                 Status = funcao.Status,
                 DataAlt = funcao.DataAltTexto,
                 DataCad = funcao.DataCadTexto
@@ -26,9 +26,9 @@ namespace SysGeSeApp2024.Converters
             {
                 Id = funcaoVm.Id,
                 Descricao = funcaoVm.Descricao.ToUpper(),
-                Status = funcaoVm.Status,
-                DataCad = DateTime.Parse(funcaoVm.DataCad),
-                DataAlt = DateTime.Parse(funcaoVm.DataAlt)
+                Status = 1,
+                DataCad = DateTime.Now,
+                DataAlt = DateTime.Now
             };
 
         }

@@ -48,3 +48,45 @@ function maiuscula(z) {
     v = z.value.toUpperCase();
     z.value = v;
 }
+
+
+function buscarDadosClientes() {
+    var cnpj = $('#Cnpj').val().replace(/[^\d]/g, '');
+    alert("Chegou aqui"+cnpj)
+    if (cnpj == "") {
+        alert("DIGITE UM CNPJ VdÁLIDO");
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: '/Cliente/BuscarDadosCliente',
+            data: { cnpj: cnpj },
+            success: function (data) {
+                console.log(data);
+                $('#Razao').val(data.razao);
+                $('#Fantasia').val(data.fantasia);
+                $('#NatJuridica').val(data.natJuridica);
+                $('#AtvPrincipal').val(data.atvPrincipal);
+                $('#Cep').val(data.cep);
+                $('#Endereco').val(data.endereco);
+                $('#Numero').val(data.Numero);
+                $('#Complemento').val(data.complemento);
+                $('#Bairro').val(data.bairro);
+                $('#Cidade').val(data.cidade);
+                $('#UF').val(data.uf);
+                $('#NomeResponsavel').val(data.nomeResponsavel);
+                $('#Telefone').val(data.telefone);
+                $('#Email').val(data.email);
+                $('#SitCadastral').val(data.sitCadastral);
+                $('#MotDescCred').val(data.motDescCred);
+                $('#DataAbertura').val(data.dataAbertura);
+            }
+        });
+    }
+}
+//$(function () {
+//    $.ajaxSetup({ cache: false });
+//    $("#btnBuscarClientes").click(function () {
+//        var inputValue = $("#Cnpj").val(); // Pega o valor do input
+//        alert(inputValue)
+//    })
+//});
