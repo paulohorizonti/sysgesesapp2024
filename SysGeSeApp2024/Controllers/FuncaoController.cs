@@ -53,7 +53,40 @@ namespace SysGeSeApp2024.Controllers
             }
             return View(funcaoVM);
         }
-        
+
+        public async Task<IActionResult> Editar(int id)
+        {
+            var funcao = await _funcaoRepository.ObterPorId(id);
+          
+            var funcaoEditar = FuncaoConverter.ToViewModel(funcao);
+
+            return View(funcaoEditar);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>Editar(FuncaoViewModel funcaoVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Falha para editar o Registro");
+                return View("Editar", funcaoVM);
+            }
+
+            var funcaoEditar = FuncaoConverter.ToModel(funcaoVM);
+            try
+            {
+                await _funcaoRepository.Atualizar(funcaoEditar);
+                TempData["Success"] = "Registro ALTERADO com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                TempData["Error"] = "Houve um erro ao adicionar o registro, tente novamente";
+                return RedirectToAction("Index");
+            }
+
+        }
+
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _funcaoRepository.ObterPorId(id);

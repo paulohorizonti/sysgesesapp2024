@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Funcao\Editar2.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
     <PackageReference Include="MySql.Data" Version="8.4.0" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.2" />

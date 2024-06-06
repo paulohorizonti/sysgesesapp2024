@@ -1,5 +1,6 @@
 ﻿using SysGeSeApp2024.Models.ViewModel;
 using SysGeSeApp2024.Models;
+using System.Data;
 
 namespace SysGeSeApp2024.Converters
 {
@@ -22,13 +23,38 @@ namespace SysGeSeApp2024.Converters
         //Converte de ViewModel para Model
         public static Funcao ToModel(FuncaoViewModel funcaoVm)
         {
+            DateTime dataCad;
+            DateTime dataAlt;
+
+            
+                       
+            if (!DateTime.TryParse(funcaoVm.DataCad, out dataCad))
+            {
+                dataCad = DateTime.Now;
+            }
+                       
+            if (DateTime.TryParse(funcaoVm.DataAlt, out dataAlt))
+            {
+               
+                if (dataAlt.Date != DateTime.Now.Date)
+                {
+                    dataAlt = DateTime.Now;
+                }
+            }
+            else
+            {
+               
+                dataAlt = DateTime.Now;
+            }
+
+
             return new Funcao
             {
                 Id = funcaoVm.Id,
                 Descricao = funcaoVm.Descricao.ToUpper(),
                 Status = 1,
-                DataCad = DateTime.Now,
-                DataAlt = DateTime.Now
+                DataCad = dataCad,
+                DataAlt = dataAlt
             };
 
         }
