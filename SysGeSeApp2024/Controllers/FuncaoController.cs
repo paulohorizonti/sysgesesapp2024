@@ -104,5 +104,14 @@ namespace SysGeSeApp2024.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+
+        public async Task<IActionResult>Detalhar(int id)
+        {
+            var funcao = await _funcaoRepository.ObterPorId(id);
+            var mostrarFuncao = FuncaoConverter.ToViewModel(funcao);
+
+            return View(mostrarFuncao);
+        }
     }
 }

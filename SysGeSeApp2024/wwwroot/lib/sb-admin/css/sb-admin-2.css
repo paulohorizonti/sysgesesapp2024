@@ -1504,10 +1504,15 @@ pre code {
   border-top: 2px solid #e3e6f0;
 }
 
-.table-sm th,
-.table-sm td {
+.table-sm th {
   padding: 0.3rem;
 }
+
+
+.table-sm td {
+    padding: 0.1rem;
+}
+
 
 .table-bordered {
   border: 1px solid #e3e6f0;
