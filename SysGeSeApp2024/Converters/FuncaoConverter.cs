@@ -51,7 +51,7 @@ namespace SysGeSeApp2024.Converters
             {
                 Id = funcaoVm.Id,
                 Descricao = funcaoVm.Descricao.ToUpper(),
-                Status = 1,
+                Status = funcaoVm.Status,
                 DataCad = dataCad,
                 DataAlt = dataAlt
             };

@@ -9,5 +9,7 @@ namespace SysGeSeApp2024.Data
         public SysGeseDbContext(DbContextOptions<SysGeseDbContext> options) : base(options) { }
 
         public DbSet<Funcao> Funcoes { get; set; }
+
+        public DbSet<Unidade> Unidades { get; set; }
     }
 }

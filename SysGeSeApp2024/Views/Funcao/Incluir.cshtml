@@ -11,8 +11,6 @@
             <span class="prn-font-card-header fw-semibold">Cadastro de Função</span>
           
             <a asp-controller="Funcao" asp-action="Index" class="float-end btn btn-outline-danger mr-1 btn-sm"><i class="fa-duotone fa-ban"></i>&nbsp; Cancelar</a>
-
-
             <button type="submit" class="float-end btn mr-1 btn-outline-primary  btn-sm"><i class="fa-duotone fa-floppy-disk"></i>&nbsp;Salvar</button>
            
         </div>
@@ -22,8 +20,9 @@
 
             <div class="row">
                 <div class="col-lg-10">
-                    <label asp-for="Descricao" class="form-label">Função</label>
+                    <label asp-for="Descricao" class="form-label">Função*</label>
                     <input asp-for="Descricao" class="form-control" placeholder="Digite a DESCRIÇÃO" data-val="True" onkeyup="maiuscula(this);" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
                 </div>
                  
             </div>
