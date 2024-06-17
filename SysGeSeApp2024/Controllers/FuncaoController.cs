@@ -113,5 +113,42 @@ namespace SysGeSeApp2024.Controllers
 
             return View(mostrarFuncao);
         }
+
+        public async Task<IActionResult>Deletar(int id)
+        {
+            //busca pelo ID
+            var funcaoApagar = await _funcaoRepository.ObterPorId(id);
+            var mostrarFuncao = FuncaoConverter.ToViewModel(funcaoApagar);
+
+            return View(mostrarFuncao);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>Deletar(FuncaoViewModel funcaoVM)
+        {
+            if(funcaoVM == null)
+            {
+                TempData["Error"] = "Registro não pode ser apagado, favor verificar e tentar novamente";
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                try
+                {
+                    var removerFuncao = FuncaoConverter.ToModel(funcaoVM);
+                    await _funcaoRepository.Remover(removerFuncao);
+                    TempData["Success"] = "Registro removido com sucesso";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Registro não pode ser apagado, favor verificar e tentar novamente";
+                    return RedirectToAction("Index");
+                }
+            }
+            
+
+        }
     }
 }

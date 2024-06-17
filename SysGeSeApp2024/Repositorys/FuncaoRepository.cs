@@ -3,6 +3,7 @@ using SysGeSeApp2024.Data;
 using SysGeSeApp2024.Interfaces;
 using SysGeSeApp2024.Models;
 using SysGeSeApp2024.Models.Enums;
+using SysGeSeApp2024.Models.ViewModel;
 
 namespace SysGeSeApp2024.Repositorys
 {
@@ -34,5 +35,7 @@ namespace SysGeSeApp2024.Repositorys
 
             return (lista, qtdTotalItens);
         }
+
+      
     }
 }

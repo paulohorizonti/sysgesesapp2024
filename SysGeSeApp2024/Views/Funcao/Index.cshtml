@@ -55,7 +55,79 @@
                 </div>
             </div>
 
-        </div>
+        </div><!--Fim do card-body->
+        <!--Botoes-->
+        <section class="footer">
+            <div class="card-footer container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <span>Página @(Model.NumeroPaginas < Model.PaginaAtual ? 0 : Model.PaginaAtual) de @Model.NumeroPaginas - Total de registros: @Model.TotalItens</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row align-items-center justify-content-end" style="margin-right: -55px">
+                            <div class="col-md-auto" style="margin-right:-1rem">
+                                <small class="form-text text-muted me-2 px-1">Página com</small>
+                            </div>
+                            <div class="col-md-auto">
+                                <select class="form-select" id="qtdPaginas" asp-for="QtdItensPagina">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
+                                </select>
+                            </div>
+                            <div class="col-md-auto" style="margin-left:-1rem">
+                                <small class="form-text text-muted ms-2 px-1">Registros</small>
+                            </div>
+                            <script>
+                                document.getElementById("qtdPaginas").addEventListener("change", function () {
+                                    this.form.submit();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <ul class="pagination text-center align-items-center justify-content-end" style="margin-bottom: 0px;">
+
+                                <!-- Link "Anterior" -->
+                                @if (Model.PaginaAtual > 1)
+                                {
+                                    <li style="border: none;">
+                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual - 1, qtdItensPagina = Model.QtdItensPagina, descricao = Model.Descricao, status = Model.Status })">
+                                            <span>&laquo; Anterior</span>
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Itens de página numerados -->
+                                @for (int i = 0; i < Model.NumeroPaginas; i++)
+                                {
+                                    <li class="@(Model.PaginaAtual == i + 1 ? "active" : string.Empty)" style="border: none; padding: 0px;">
+                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = i + 1, qtdItensPagina = Model.QtdItensPagina,  descricao = Model.Descricao, status = Model.Status })">
+                                            <span>@(i + 1)</span>
+                                        </a>
+                                    </li>
+                                }
+
+                                <!-- Link "Próximo" -->
+                                @if (Model.PaginaAtual < Model.NumeroPaginas)
+                                {
+                                    <li class="" style="border: none;">
+                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual + 1, qtdItensPagina = Model.QtdItensPagina,  descricao = Model.Descricao, status = Model.Status })">
+                                            <span>Próximo &raquo;</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </div>
 
@@ -63,48 +135,3 @@
 
 
 
-@* <form asp-controller="Perfil" asp-action="index">
-
-    <div class="row g-0 pt-1">
-        <div class="card prn-cardposition">
-            <div class="card-header">
-                <span class="fw-medium">Cadastro de FUNÇÕES</span>
-                <a class="float-end  btn btn-outline-warning btn-sm ml-2" onclick="limparInputs()"><i class="fa-duotone fa-broom"></i> Limpar</a>
-
-                <a class="float-end  btn btn-outline-primary btn-sm" onclick="chamarIncluir()"><i class="fa-duotone fa-circle-plus"></i> Novo</a>
-
-            </div>
-            <div class="card-body prn-card-geral">
-                <div class="container-fluid prn-continer-geral">
-                    @await Html.PartialAsync("~/Views/Acoes/Mensagens.cshtml")
-                    <div class="row g-0 border-bottom">
-                        <div class="form-group col-md-4">
-                            <label asp-for="Descricao" class="form-label">Perfil</label>
-                            <div class="input-group input-group-sm">
-                                <input asp-for="Descricao" class="form-control" placeholder="Digite a DESCRIÇÃO" data-val="True" onkeyup="maiuscula(this);" />
-                                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fa-duotone fa-magnifying-glass"></i></button>
-
-                            </div>
-                        </div>
-                       
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <partial name="_TabelaFuncaoPrincipal" model="Model.Funcoes" />
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <!--fim card-body-->
-
-        </div>
-        
-
-
-
-    </div>
-
-    
-</form> *@

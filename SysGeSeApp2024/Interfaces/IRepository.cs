@@ -11,7 +11,7 @@ namespace SysGeSeApp2024.Interfaces
 
         Task Atualizar(TEntity entity);
 
-        Task Remover(int id);
+        Task Remover(TEntity entity);
         Task<int> SaveChanges();
     }
 }

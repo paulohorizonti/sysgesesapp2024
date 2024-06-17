@@ -25,8 +25,7 @@ namespace SysGeSeApp2024.Converters
         {
             DateTime dataCad;
             DateTime dataAlt;
-
-            
+                       
                        
             if (!DateTime.TryParse(funcaoVm.DataCad, out dataCad))
             {

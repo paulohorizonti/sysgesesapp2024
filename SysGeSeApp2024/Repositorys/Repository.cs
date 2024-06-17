@@ -31,19 +31,27 @@ namespace SysGeSeApp2024.Repositorys
             await SaveChanges();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+     
+            public void Dispose()
+            {
+                _db?.Dispose();
+            }
+        
 
         public virtual async Task<TEntity> ObterPorId(int id)
         {
             return await _debSet.FindAsync(id);
         }
 
-        public virtual async Task Remover(int id)
+        //public virtual async Task Remover(int id)
+        //{
+        //    _debSet.Remove(new TEntity { Id = id });
+        //    await SaveChanges();
+        //}
+
+        public virtual async Task Remover(TEntity entity)
         {
-            _debSet.Remove(new TEntity { Id = id });
+            _debSet.Remove(entity);
             await SaveChanges();
         }
 
