@@ -23,7 +23,8 @@ namespace SysGeSeApp2024.Converters
                 Observacoes = unidade.Observacoes,
                 Email = unidade.Email,
                 DataCad = unidade.DataCadTexto,
-                DataAlt = unidade.DataAltTexto
+                DataAlt = unidade.DataAltTexto,
+                Status = unidade.Status
 
             };
         }
@@ -82,7 +83,8 @@ namespace SysGeSeApp2024.Converters
                 Observacoes = unidadeVM.Observacoes,
                 Email = unidadeVM.Email,
                 DataCad = dataCad,
-                DataAlt = dataAlt
+                DataAlt = dataAlt,
+                Status = unidadeVM.Status
             };
         }
         public static List<UnidadeViewModel> ToViewModel(List<Unidade>? unidades, List<Estado> estados)

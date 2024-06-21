@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SysGeSeApp2024.Converters;
 using SysGeSeApp2024.Interfaces;
+using SysGeSeApp2024.Models;
 using SysGeSeApp2024.Models.ViewModel;
 using SysGeSeApp2024.Repositorys;
 
@@ -28,5 +29,36 @@ namespace SysGeSeApp2024.Controllers
 
             return View(new UnidadeListViewModel(lista, estados, status, QtdTotalItens, paginaAtual, qtdItensPagina));
         }
+
+
+
+        public async Task<IActionResult> Incluir()
+        {
+            var est = await _estadoRepository.ObterTodos();
+                      
+            var unidadeViewModel = UnidadeConverter.ToViewModel(new Unidade(), est);
+
+            return View(unidadeViewModel);
+        }
+
+
+        public async Task<IActionResult> AtivarDesativar(int id)
+        {
+            var obj = await _unidadeRepository.ObterPorId(id);
+
+            obj.Status = (sbyte?)((obj.Status == 1) ? 0 : 1);
+
+            try
+            {
+                _unidadeRepository.Atualizar(obj);
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                TempData["Erro"] = "Não foi possível concluír a solicitação, tente novamente";
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

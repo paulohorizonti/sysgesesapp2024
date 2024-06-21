@@ -21,4 +21,11 @@
     <None Include="Views\Funcao\Detalhar_2.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Unidade\_TabelaUnidadePrincipal.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
