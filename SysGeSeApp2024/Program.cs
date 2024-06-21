@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IFuncaoRepository, FuncaoRepository>();
 builder.Services.AddScoped<IUnidadeRepository, UnidadeRepository>();
+builder.Services.AddScoped<IEstadoRepository, EstadoRepository>();
+
 
 builder.Services.AddDbContext<SysGeseDbContext>(options =>
 {

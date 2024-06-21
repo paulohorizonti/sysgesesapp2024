@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SysGeSeApp2024.Models.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SysGeSeApp2024.Models
 {
@@ -23,7 +24,7 @@ namespace SysGeSeApp2024.Models
 
 
         [Column("ESTADO")]
-        public string Estado { get; set; }
+        public string? Estado { get; set; }
 
         [Column("CNPJ")]
         public string Cnpj { get; set; }

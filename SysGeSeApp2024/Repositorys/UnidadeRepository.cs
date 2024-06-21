@@ -19,7 +19,7 @@ namespace SysGeSeApp2024.Repositorys
 
             if (!string.IsNullOrEmpty(estado))
             {
-                query = query.Where(p => p.Estado.Contains(estado));
+                query = query.Where(p => p.Estado == estado);
             }
 
             if (!string.IsNullOrEmpty(nome))

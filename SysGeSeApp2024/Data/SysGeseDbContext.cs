@@ -11,5 +11,7 @@ namespace SysGeSeApp2024.Data
         public DbSet<Funcao> Funcoes { get; set; }
 
         public DbSet<Unidade> Unidades { get; set; }
+
+        public DbSet<Estado> Estados { get; set; }
     }
 }

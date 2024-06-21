@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SysGeSeApp2024.Models.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
@@ -7,11 +8,12 @@ namespace SysGeSeApp2024.Models.ViewModel
 
     public class UnidadeListViewModel: BaseListViewModel
     {
-        public UnidadeListViewModel(List<UnidadeViewModel>? unidades, sbyte status, int totalItens, int paginaAtual, int qtdItensPagina):base(totalItens, paginaAtual, qtdItensPagina)
+        public UnidadeListViewModel(List<UnidadeViewModel>? unidades, List<EstadoViewModel>? estados,  sbyte status, int totalItens, int paginaAtual, int qtdItensPagina):base(totalItens, paginaAtual, qtdItensPagina)
         {
             Unidades = unidades;
             TotalItens = totalItens;
             Status = status;
+            Estados = estados;
         }
         public string Nome { get; set; }
         public string Cidade { get; set; }
@@ -21,6 +23,7 @@ namespace SysGeSeApp2024.Models.ViewModel
 
 
         public List<UnidadeViewModel>? Unidades { get; set; }
+        public List<EstadoViewModel>? Estados { get; set; }
 
     }
 
@@ -51,7 +54,7 @@ namespace SysGeSeApp2024.Models.ViewModel
 
 
         [Required(ErrorMessage = "O campo ESTADO é obrigatório.")]
-        public string Estado { get; set; }
+        public string? Estado { get; set; }
 
        
         [RegularExpression(@"^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$", ErrorMessage = "Informe um email válido")]
@@ -76,7 +79,9 @@ namespace SysGeSeApp2024.Models.ViewModel
         public sbyte? Status { get; set; }
         public string? DataCad { get; set; }
         public string? DataAlt { get; set; }
-       
-        
+
+        public List<EstadoViewModel>? Estados { get; set; }
+
+
     }
 }
