@@ -95,7 +95,7 @@ namespace SysGeSeApp2024.Controllers
 
             try
             {
-                _funcaoRepository.Atualizar(obj);
+                await _funcaoRepository.Atualizar(obj);
                 return RedirectToAction("Index");
             }
             catch(Exception)

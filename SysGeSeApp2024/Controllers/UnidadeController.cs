@@ -50,7 +50,7 @@ namespace SysGeSeApp2024.Controllers
 
             try
             {
-                _unidadeRepository.Atualizar(obj);
+                await _unidadeRepository.Atualizar(obj);
                 return RedirectToAction("Index");
             }
             catch (Exception)
