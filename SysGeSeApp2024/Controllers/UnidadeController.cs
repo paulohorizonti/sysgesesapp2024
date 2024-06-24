@@ -40,6 +40,44 @@ namespace SysGeSeApp2024.Controllers
 
             return View(unidadeViewModel);
         }
+        [HttpPost]
+        public async Task<IActionResult> Incluir(UnidadeViewModel? unidadeVM)
+        {
+          
+
+            if (ModelState.IsValid && unidadeVM != null)
+            {
+                var unidadeNova = UnidadeConverter.ToModel(unidadeVM);
+                try
+                {
+                    await _unidadeRepository.Adicionar(unidadeNova);
+                    TempData["Success"] = "Unidade cadastrada com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Houve um erro ao adicionar o usuário, tente novamente";
+                    return RedirectToAction("Index");
+                }
+
+            }
+            var est = await _estadoRepository.ObterTodos();
+            unidadeVM = UnidadeConverter.ToViewModel(new Unidade(), est);
+            return View(unidadeVM);
+        }
+
+
+
+        public async Task<IActionResult> Editar(int id)
+        {
+            var unidade = await _unidadeRepository.ObterPorId(id);
+                      
+            var est = await _estadoRepository.ObterTodos();
+
+            var unidadeEditar = UnidadeConverter.ToViewModel(unidade, est);
+
+            return View(unidadeEditar);
+        }
 
 
         public async Task<IActionResult> AtivarDesativar(int id)
