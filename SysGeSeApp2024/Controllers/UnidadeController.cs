@@ -78,7 +78,34 @@ namespace SysGeSeApp2024.Controllers
 
             return View(unidadeEditar);
         }
+        [HttpPost]
+        public async Task<IActionResult> Editar(UnidadeViewModel unidadeVM)
+        {
+            var est = await _estadoRepository.ObterTodos();
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Falha para editar o Registro");
+                unidadeVM.Estados = EstadoConverter.ToViewModel(est);
+                return View("Editar", unidadeVM);
+            }
+            else
+            {
+                var unidadeEditar = UnidadeConverter.ToModel(unidadeVM);
+                try
+                {
+                    await _unidadeRepository.Atualizar(unidadeEditar);
+                    TempData["Success"] = "Registro ALTERADO com sucesso";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Houve um erro ao adicionar o registro, tente novamente";
+                    return RedirectToAction("Index");
+                }
+            }
+           
 
+        }
 
         public async Task<IActionResult> AtivarDesativar(int id)
         {

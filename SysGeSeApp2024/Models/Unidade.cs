@@ -14,7 +14,7 @@ namespace SysGeSeApp2024.Models
                
 
         [Column("CEP")]
-        public string Cep { get; set; }
+        public string? Cep { get; set; }
 
         [Column("BAIRRO")]
         public string Bairro { get; set; }
@@ -24,27 +24,27 @@ namespace SysGeSeApp2024.Models
 
 
         [Column("ESTADO")]
-        public string? Estado { get; set; }
+        public string Estado { get; set; }
 
         [Column("CNPJ")]
-        public string Cnpj { get; set; }
+        public string? Cnpj { get; set; }
 
         [Column("IE")]
         public string Ie { get; set; }
 
 
         [Column("TELEFONE")]
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
 
         [Column("CELULAR")]
-        public string Celular { get; set; }
+        public string? Celular { get; set; }
 
         [Column("OBSERVACOES")]
-        public string Observacoes { get; set; }
+        public string? Observacoes { get; set; }
 
 
         [Column("EMAIL")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         //Lado N do relacionamento
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
