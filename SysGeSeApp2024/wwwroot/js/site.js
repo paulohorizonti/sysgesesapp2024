@@ -6,10 +6,12 @@
     $('.phone').mask('9999-9999');
     $('.telefone').mask('(99)9999-9999');
     $('.celular').mask("(99)99999-9999");
+    $('#Celular').mask("(99)99999-9999");
     $('#cnpj').mask('99.999.999/9999-99');
     $('#Cnpj').mask('99.999.999/9999-99');
     $('.cnpj').mask('99.999.999/9999-99');
-    $('#telefone').mask('(99)99999-9999');
+    $('#telefone').mask('(99)9999-9999');
+    $('#Telefone').mask('(99)9999-9999');
     $(".senha").mask("xxxxxxxxx");
     $("#cest").mask("99.999.99");
     $("#ProcuraNCM").mask("9999.99.99");
@@ -46,6 +48,11 @@ function limparInputs() {
 }
 function maiuscula(z) {
     v = z.value.toUpperCase();
+    z.value = v;
+}
+
+function minuscula(z) {
+    v = z.value.toLowerCase();
     z.value = v;
 }
 
@@ -90,3 +97,11 @@ function buscarDadosClientes() {
 //        alert(inputValue)
 //    })
 //});
+//FECHAR O ALERT APOS A MENSAGEM
+$(function () {
+    setTimeout(function () {
+        $(".alert").fadeOut("slow", function () {
+            $(this).alert('close');
+        });
+    }, 5000);
+});

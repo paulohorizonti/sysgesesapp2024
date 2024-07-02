@@ -34,7 +34,6 @@ namespace SysGeSeApp2024.Models.ViewModel
 
         [Required(ErrorMessage = "O campo NOME é obrigatório.")]
         [MinLength(4, ErrorMessage = "O NOME deve ter 4 ou mais caracteres")]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Números e caracteres especiais não são permitidos no NOME.")]
         public string Nome { get; set; }
 
 

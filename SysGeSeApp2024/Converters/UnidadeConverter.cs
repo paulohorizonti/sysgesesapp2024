@@ -84,7 +84,7 @@ namespace SysGeSeApp2024.Converters
                 Email = unidadeVM.Email,
                 DataCad = dataCad,
                 DataAlt = dataAlt,
-                Status = unidadeVM.Status
+                Status = (unidadeVM.Status==null)?1:unidadeVM.Status
             };
         }
         public static List<UnidadeViewModel> ToViewModel(List<Unidade>? unidades, List<Estado> estados)

@@ -30,7 +30,7 @@ namespace SysGeSeApp2024.Models
         public string? Cnpj { get; set; }
 
         [Column("IE")]
-        public string Ie { get; set; }
+        public string? Ie { get; set; }
 
 
         [Column("TELEFONE")]

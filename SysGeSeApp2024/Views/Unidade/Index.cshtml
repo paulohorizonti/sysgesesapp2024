@@ -96,7 +96,7 @@
                                 @if (Model.PaginaAtual > 1)
                                 {
                                     <li style="border: none;">
-                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual - 1, qtdItensPagina = Model.QtdItensPagina, cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
+                                        <a class="btn  page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual - 1, qtdItensPagina = Model.QtdItensPagina, cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
                                             <span>&laquo; Anterior</span>
                                         </a>
                                     </li>
@@ -106,7 +106,7 @@
                                 @for (int i = 0; i < Model.NumeroPaginas; i++)
                                 {
                                     <li class="@(Model.PaginaAtual == i + 1 ? "active" : string.Empty)" style="border: none; padding: 0px;">
-                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = i + 1, qtdItensPagina = Model.QtdItensPagina,  cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
+                                        <a class="btn  page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = i + 1, qtdItensPagina = Model.QtdItensPagina,  cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
                                             <span>@(i + 1)</span>
                                         </a>
                                     </li>
@@ -116,7 +116,7 @@
                                 @if (Model.PaginaAtual < Model.NumeroPaginas)
                                 {
                                     <li class="" style="border: none;">
-                                        <a class="btn page-link align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual + 1, qtdItensPagina = Model.QtdItensPagina, cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
+                                        <a class="btn  page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual + 1, qtdItensPagina = Model.QtdItensPagina, cidade = Model.Cidade,  estado = Model.Estado,  nome = Model.Nome, status = Model.Status })">
                                             <span>Próximo &raquo;</span>
                                         </a>
                                     </li>
