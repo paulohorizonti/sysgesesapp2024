@@ -99,7 +99,7 @@ namespace SysGeSeApp2024.Controllers
                 }
                 catch (Exception)
                 {
-                    TempData["Error"] = "Houve um erro ao adicionar o registro, tente novamente";
+                    TempData["Error"] = "Houve um erro ao EDITAR o registro, tente novamente";
                     return RedirectToAction("Index");
                 }
             }

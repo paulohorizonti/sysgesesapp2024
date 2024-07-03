@@ -100,9 +100,7 @@ body {
     .pagination li a {
     }
     .pagination > li {
-        border: 1px solid #ccc;
-        text-decoration: none;
-        padding: 5px 12px 5px 12px;
+       
         background: #0000000d;
     }
 
