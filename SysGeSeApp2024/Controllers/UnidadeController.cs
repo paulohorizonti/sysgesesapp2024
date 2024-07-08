@@ -107,6 +107,18 @@ namespace SysGeSeApp2024.Controllers
 
         }
 
+
+        public async Task<IActionResult>Detalhar(int id)
+        {
+            var unidade = await _unidadeRepository.ObterPorId(id);
+
+           
+
+            var unidadeDetalhar = UnidadeConverter.ToViewModel(unidade);
+
+            return View(unidadeDetalhar);
+        }
+
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _unidadeRepository.ObterPorId(id);
