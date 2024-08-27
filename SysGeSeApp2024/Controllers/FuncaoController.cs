@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FastReport.Export.PdfSimple;
+using Microsoft.AspNetCore.Mvc;
 using SysGeSeApp2024.Converters;
 using SysGeSeApp2024.Interfaces;
 using SysGeSeApp2024.Models;
@@ -9,9 +10,13 @@ namespace SysGeSeApp2024.Controllers
     public class FuncaoController : Controller
     {
         private readonly IFuncaoRepository _funcaoRepository;
-        public FuncaoController(IFuncaoRepository funcaoRepository)
+        private readonly IWebHostEnvironment _webHostEnv;
+
+
+        public FuncaoController(IFuncaoRepository funcaoRepository, IWebHostEnvironment webHostEnv)
         {
             _funcaoRepository = funcaoRepository;
+            _webHostEnv = webHostEnv;
         }
 
         public async Task<IActionResult> Index(string descricao, sbyte status = 2, int paginaAtual = 1, int qtdItensPagina = 5)
@@ -24,10 +29,45 @@ namespace SysGeSeApp2024.Controllers
             return View(new FuncaoListViewModel(lista, status, QtdTotalItens, paginaAtual, qtdItensPagina));
         }
 
+        [Route("CreateReport")]
+        public async Task<IActionResult> CreateReport()
+        {
+            var caminhoReport = Path.Combine(_webHostEnv.WebRootPath, @"reports\ReportMvc.frx");
+            var reportFile = caminhoReport;
+
+            var freport = new FastReport.Report();
+            var funcaoList = await _funcaoRepository.ObterTodos();
+
+            freport.Dictionary.RegisterBusinessObject(funcaoList, "funcaoList", 10, true);
+            freport.Report.Save(reportFile);
+
+            return Ok($" Relatório Gerado: {caminhoReport}");
+
+        }
+
+        [Route("FuncaoReport")]
+        public async Task<IActionResult> FuncaoReport()
+        {
+            var caminhoReport = Path.Combine(_webHostEnv.WebRootPath, @"reports\ReportMvc.frx");
+            var reportFile = caminhoReport;
+            var freport = new FastReport.Report();
+            var funcaoList = await _funcaoRepository.ObterTodos();
+            freport.Report.Load(reportFile);
+            freport.Dictionary.RegisterBusinessObject(funcaoList, "funcaoList", 10, true);
+            freport.Prepare();
+            var pdfExport = new PDFSimpleExport();
+
+            using MemoryStream ms = new MemoryStream();
+            pdfExport.Export(freport, ms);
+            ms.Flush();
+            return File(ms.ToArray(), "application/pdf");
+            
+        }
+
         public async Task<IActionResult> Incluir()
         {
 
-            var funcaoViewModel = FuncaoConverter.ToViewModel(new Funcao());
+            var funcaoViewModel =  FuncaoConverter.ToViewModel(new Funcao());
          
             return View(funcaoViewModel);
             

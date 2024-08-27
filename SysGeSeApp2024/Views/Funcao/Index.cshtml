@@ -39,12 +39,16 @@
                 <div class="col-lg-12">
                    
                     <button type="submit" class="float-end btn btn-outline-success mr-1 btn-sm"><i class="fa-duotone fa-magnifying-glass"></i>&nbsp; Pesquisar</button>
-                    <button class="float-end btn btn-outline-secondary mr-1 btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-duotone fa-download"></i>&nbsp;Exportar</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><i class="fa-duotone fa-file-excel"></i>Excel</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-duotone fa-file-pdf"></i>Pdf</a></li>
 
-                    </ul>
+                    <div class="dropdown">
+                        <button class="float-end btn btn-outline-secondary mr-1 btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa-duotone fa-download"></i>&nbsp;Exportar</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fa-duotone fa-file-excel"></i>Excel</a></li>
+                            <li><a class="dropdown-item fs-6" asp-controller="Funcao" asp-action="FuncaoReport" target="_blank"><i class="fs-6 fa-duotone fa-file-pdf"></i> Pdf</a></li>
+
+                        </ul>
+                    </div>   
+                    
 
                     <button onclick="limparInputs()" class="float-end btn mr-1 btn-outline-warning  btn-sm"><i class="fa-duotone fa-broom"></i>&nbsp;Limpar</button>
                 </div>
@@ -132,6 +136,4 @@
     </div>
 
 </form>
-
-
 
