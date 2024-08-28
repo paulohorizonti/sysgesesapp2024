@@ -119,6 +119,48 @@ namespace SysGeSeApp2024.Controllers
             return View(unidadeDetalhar);
         }
 
+
+        public async Task<IActionResult>Deletar(int id)
+        {
+            //busca pelo ID
+            var unidadeApagar = await _unidadeRepository.ObterPorId(id);
+            var mostrarUnidade = UnidadeConverter.ToViewModel(unidadeApagar);
+
+            return View(mostrarUnidade);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Deletar(UnidadeViewModel unidadeVM)
+        {
+            if (unidadeVM == null)
+            {
+                TempData["Error"] = "Registro não pode ser apagado, favor verificar e tentar novamente";
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                //Nesse ponto, o sistema deve verificar se a função está sendo usada em algum lugar no banco
+                //caso não esteja ela vai continuar o fluxo de apagar, caso contrario ele retorna a mensagem de que nao pode remover
+
+
+
+                try
+                {
+                    var removerUnidade = UnidadeConverter.ToModel(unidadeVM);
+                    await _unidadeRepository.Remover(removerUnidade);
+                    TempData["Success"] = "Registro removido com sucesso";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Registro não pode ser apagado, favor verificar e tentar novamente";
+                    return RedirectToAction("Index");
+                }
+            }
+
+
+        }
+
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _unidadeRepository.ObterPorId(id);

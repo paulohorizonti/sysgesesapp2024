@@ -9,6 +9,7 @@
   <ItemGroup>
     <Content Remove="Views\Funcao\Detalhar_2.cshtml" />
     <Content Remove="Views\Funcao\Editar2.cshtml" />
+    <Content Remove="Views\Unidade\Deletarold.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <None Include="Views\Funcao\Detalhar_2.cshtml" />
+    <None Include="Views\Unidade\Deletarold.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

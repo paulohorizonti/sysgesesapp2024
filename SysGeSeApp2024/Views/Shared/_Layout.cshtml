@@ -94,8 +94,8 @@
                         @*<a class="collapse-item" href="utilities-color.html">Perfis</a>*@
                         <a class="collapse-item" href="@Url.Action("Index","Tabela")">Tabelas</a>
                         <a class="collapse-item" href="@Url.Action("Index","Acesso")">Acessos</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Perfil")">Perfis</a>
-
+                        @* <a class="collapse-item" href="@Url.Action("Index","Perfil")">Perfis</a> *@
+                        <a asp-controller="Perfil" asp-action="Index" class="collapse-item">Perfis</a>
                     </div>
                 </div>
             </li>

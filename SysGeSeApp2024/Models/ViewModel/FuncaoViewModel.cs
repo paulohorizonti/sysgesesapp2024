@@ -13,14 +13,10 @@ namespace SysGeSeApp2024.Models.ViewModel
             Status = status;
            
         }
-
-
         public string Descricao { get; set; }
         public int TotalItens { get; set; }
         public sbyte? Status { get; set; }
-
-
-       public List<FuncaoViewModel>? Funcoes { get; set; }
+        public List<FuncaoViewModel>? Funcoes { get; set; }
 
        
         

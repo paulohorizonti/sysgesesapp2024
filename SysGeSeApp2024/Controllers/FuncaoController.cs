@@ -78,6 +78,7 @@ namespace SysGeSeApp2024.Controllers
             if(ModelState.IsValid && funcaoVM != null)
             {
                 var funcaoNova = FuncaoConverter.ToModel(funcaoVM);
+             
                 try
                 {
                     await _funcaoRepository.Adicionar(funcaoNova);
@@ -174,6 +175,19 @@ namespace SysGeSeApp2024.Controllers
             }
             else
             {
+                //Nesse ponto, o sistema deve verificar se a função está sendo usada em algum lugar no banco
+                //caso não esteja ela vai continuar o fluxo de apagar, caso contrario ele retorna a mensagem de que nao pode remover
+
+                // Verifica se a unidade está sendo usada em outro lugar no banco de dados
+                //bool unidadeEmUso = await _unidadeRepository.VerificarSeUnidadeEstaEmUso(removerUnidade.Id);
+
+                //if (unidadeEmUso)
+                //{
+                //    TempData["Error"] = "Registro não pode ser apagado, pois está em uso em outra parte do sistema.";
+                //    return RedirectToAction("Index");
+                //}
+
+
                 try
                 {
                     var removerFuncao = FuncaoConverter.ToModel(funcaoVM);

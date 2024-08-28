@@ -25,8 +25,9 @@ namespace SysGeSeApp2024.Converters
         {
             DateTime dataCad;
             DateTime dataAlt;
-                       
-                       
+
+           
+
             if (!DateTime.TryParse(funcaoVm.DataCad, out dataCad))
             {
                 dataCad = DateTime.Now;
@@ -51,9 +52,9 @@ namespace SysGeSeApp2024.Converters
             {
                 Id = funcaoVm.Id,
                 Descricao = funcaoVm.Descricao.ToUpper(),
-                Status = funcaoVm.Status,
                 DataCad = dataCad,
-                DataAlt = dataAlt
+                DataAlt = dataAlt,
+                Status = (funcaoVm.Status == null) ? 1 : funcaoVm.Status
             };
 
         }
