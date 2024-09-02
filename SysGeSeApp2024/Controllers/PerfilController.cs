@@ -55,6 +55,39 @@ namespace SysGeSeApp2024.Controllers
             return View(perfilVM);
         }
 
+        public async Task<IActionResult> Editar(int id)
+        {
+            var perfil = await _perfilRepository.ObterPorId(id);
+
+            var perfilEditar = PerfilConverter.ToViewModel(perfil);
+
+            return View(perfilEditar);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(PerfilViewModel perfilVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Falha para editar o Registro");
+                return View("Editar", perfilVM);
+            }
+
+            var perfilEditar = PerfilConverter.ToModel(perfilVM);
+            try
+            {
+                await _perfilRepository.Atualizar(perfilEditar);
+                TempData["Success"] = "Registro ALTERADO com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                TempData["Error"] = "Houve um erro ao adicionar o registro, tente novamente";
+                return RedirectToAction("Index");
+            }
+
+        }
+
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _perfilRepository.ObterPorId(id);
