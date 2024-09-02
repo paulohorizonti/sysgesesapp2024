@@ -95,7 +95,7 @@
                         <a class="collapse-item" href="@Url.Action("Index","Tabela")">Tabelas</a>
                         <a class="collapse-item" href="@Url.Action("Index","Acesso")">Acessos</a>
                         @* <a class="collapse-item" href="@Url.Action("Index","Perfil")">Perfis</a> *@
-                        <a asp-controller="Perfil" asp-action="Index" class="collapse-item">Perfis</a>
+                        <a id="Perfil" asp-controller="Perfil" asp-action="Index" class="collapse-item">Perfis</a>
                     </div>
                 </div>
             </li>
@@ -381,17 +381,12 @@
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/jquery/jquery.mask.min.js"></script>
     <script src="~/lib/jquery/jquery.maskedinput.min.js"></script>
-
     <script src="~/lib/bootstrap/js/bootstrapbundle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
- 
-
     <script src="~/lib/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/lib/sb-admin/js/sb-admin-2.js"></script>
@@ -399,6 +394,7 @@
  *@    
      <script src="~/lib/bootstrap/js/popper.js"></script>
      <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></<script>
+      
     <script>
 
         $(function () {
