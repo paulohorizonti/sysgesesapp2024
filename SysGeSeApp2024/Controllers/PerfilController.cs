@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SysGeSeApp2024.Converters;
 using SysGeSeApp2024.Interfaces;
+using SysGeSeApp2024.Models;
 using SysGeSeApp2024.Models.ViewModel;
 using SysGeSeApp2024.Repositorys;
 
@@ -22,6 +23,36 @@ namespace SysGeSeApp2024.Controllers
             var lista = PerfilConverter.ToViewModel(Perfis);
 
             return View(new PerfilListViewModel(lista, status, QtdTotalItens, paginaAtual, qtdItensPagina));
+        }
+        public async Task<IActionResult> Incluir()
+        {
+
+            var perfilViewModel = PerfilConverter.ToViewModel(new Perfil());
+
+            return View(perfilViewModel);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Incluir(PerfilViewModel? perfilVM)
+        {
+            if (ModelState.IsValid && perfilVM != null)
+            {
+                var perfilNovo = PerfilConverter.ToModel(perfilVM);
+
+                try
+                {
+                    await _perfilRepository.Adicionar(perfilNovo);
+                    TempData["Success"] = "Registro cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    TempData["Error"] = "Houve um erro ao adicionar o REGISTRO, tente novamente";
+                    return RedirectToAction("Index");
+                }
+
+            }
+            return View(perfilVM);
         }
 
         public async Task<IActionResult> AtivarDesativar(int id)
