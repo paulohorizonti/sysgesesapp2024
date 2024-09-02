@@ -15,17 +15,31 @@
             get
             {
                 if ((TotalItens / QtdItensPagina) < 1)
+                {
                     return 1;
+                }
                 else
+                {
                     if ((TotalItens / QtdItensPagina) % 2 == 0)
-                {
-                    return (int)(TotalItens / QtdItensPagina);
+                    {
+                        return (int)(TotalItens / QtdItensPagina);
+                    }
+                    else
+                    {
+                        if (TotalItens == QtdItensPagina)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            //pegar o resto da divisão
+                            return (int)((TotalItens / QtdItensPagina) + 1);
+
+                        }
+
+                    }
                 }
-                else
-                {
-                    //pegar o resto da divisão
-                    return (int)((TotalItens / QtdItensPagina) + 1);
-                }
+               
 
 
             }
