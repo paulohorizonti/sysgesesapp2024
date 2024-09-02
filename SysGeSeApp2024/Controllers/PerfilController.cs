@@ -88,6 +88,13 @@ namespace SysGeSeApp2024.Controllers
 
         }
 
+        public async Task<IActionResult> Detalhar(int id)
+        {
+            var perfil = await _perfilRepository.ObterPorId(id);
+            var mostrarPerfil = PerfilConverter.ToViewModel(perfil);
+
+            return View(mostrarPerfil);
+        }
         public async Task<IActionResult> AtivarDesativar(int id)
         {
             var obj = await _perfilRepository.ObterPorId(id);
