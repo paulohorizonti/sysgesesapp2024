@@ -1,6 +1,4 @@
 ﻿using SysGeSeApp2024.Models;
-using SysGeSeApp2024.Models.Enums;
-using SysGeSeApp2024.Models.ViewModel;
 
 namespace SysGeSeApp2024.Interfaces
 {
