@@ -34,7 +34,7 @@ namespace SysGeSeApp2024.Repositorys
             var lista = await query.
                Include(p=> p.Tabela).
                Include(p=>p.Perfil).
-               OrderBy(p => p.Id).
+               OrderBy(p => p.Perfil.Descricao).
                Skip(paginaAtual * qtdItensPagina).
                Take(qtdItensPagina).ToListAsync();
 

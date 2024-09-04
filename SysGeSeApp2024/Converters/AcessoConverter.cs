@@ -17,12 +17,26 @@ namespace SysGeSeApp2024.Converters
                 TabelaAlterar = acesso.TabelaAlterar,
                 TabelaExcluir = acesso.TabelaExcluir,
                 TabelaObservacao = acesso.TabelaObservacao,
+                Status = acesso.Status,
                 IdPerfil = acesso.IdPerfil,
                 Perfil = acesso.Perfil,
                 DataAlt = acesso.DataAltTexto,
                 DataCad = acesso.DataCadTexto
 
             };
+        }
+
+        public static AcessoViewModel? ToViewModel(Acesso acesso, List<Tabela> tabelas, List<Perfil> perfis)
+        {
+            AcessoViewModel acessoViewModel = ToViewModel(acesso);
+            if (acessoViewModel != null)
+            {
+
+                acessoViewModel.Tabelas = TabelaConverter.ToViewModel(tabelas);
+                acessoViewModel.Perfis = PerfilConverter.ToViewModel(perfis);
+            }
+            return acessoViewModel;
+
         }
 
         public static Acesso ToModel(AcessoViewModel acessoVM)

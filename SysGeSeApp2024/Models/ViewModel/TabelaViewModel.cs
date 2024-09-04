@@ -2,7 +2,7 @@
 
 namespace SysGeSeApp2024.Models.ViewModel
 {
-    public class TabelalListViewModel : BaseListViewModel
+    public class TabelaListViewModel : BaseListViewModel
     {
         public TabelaListViewModel(List<TabelaViewModel>? tabelas, sbyte status, int totalItens, int paginaAtual, int qtdItensPagina) : base(totalItens, paginaAtual, qtdItensPagina)
         {
