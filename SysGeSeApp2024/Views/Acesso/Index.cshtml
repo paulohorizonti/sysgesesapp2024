@@ -21,7 +21,7 @@
                 <div class="col-lg-4">
                     <label asp-for="IdTabela" class="form-label form-label-sm">Descrição da Tabela</label>
                   
-                    <select asp-for="IdTabela" asp-items='new SelectList(Model.Tabelas, "Id", "TabelaDesc")' class="form-select form-control-sm"></select>
+                    <select asp-for="IdTabela" name="tabdescricao" asp-items='new SelectList(Model.Tabelas, "Id", "TabelaDesc")' class="form-select form-control-sm"></select>
 
                 </div>
                   <div class="col-lg-4">
@@ -67,6 +67,7 @@
                     
                 </div>
             </div>
+           
 
         </div>
         <!--Fim do card-body->
@@ -115,7 +116,7 @@
                                 @if (Model.PaginaAtual > 1)
                                 {
                                     <li style="border: none;">
-                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual - 1, qtdItensPagina = Model.QtdItensPagina, TabelaDesc = Model.TabelaDesc, PerfilDesc = Model.PerfilDesc, status = Model.Status })">
+                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual - 1, qtdItensPagina = Model.QtdItensPagina, tabdescricao = Model.TabelaDesc, perfil = Model.PerfilDesc, status = Model.Status })">
                                             <span>&laquo; Anterior</span>
                                         </a>
                                     </li>
@@ -125,7 +126,7 @@
                                 @for (int i = 0; i < Model.NumeroPaginas; i++)
                                 {
                                     <li class="@(Model.PaginaAtual == i + 1 ? "active" : string.Empty)" style="border: none; padding: 0px;">
-                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = i + 1, qtdItensPagina = Model.QtdItensPagina,  TabelaDesc = Model.TabelaDesc, PerfilDesc = Model.PerfilDesc, status = Model.Status })">
+                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = i + 1, qtdItensPagina = Model.QtdItensPagina,  tabdescricao = Model.TabelaDesc, perfil = Model.PerfilDesc, status = Model.Status })">
                                             <span>@(i + 1)</span>
                                         </a>
                                     </li>
@@ -135,7 +136,7 @@
                                 @if (Model.PaginaAtual < Model.NumeroPaginas)
                                 {
                                     <li class="" style="border: none;">
-                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual + 1, qtdItensPagina = Model.QtdItensPagina,  TabelaDesc = Model.TabelaDesc, PerfilDesc = Model.PerfilDesc, status = Model.Status })">
+                                        <a class="btn page-link-pr align-middle" href="@Url.Action("index", new { paginaAtual = Model.PaginaAtual + 1, qtdItensPagina = Model.QtdItensPagina,  tabdescricao = Model.TabelaDesc, perfil = Model.PerfilDesc, status = Model.Status })">
                                             <span>Próximo &raquo;</span>
                                         </a>
                                     </li>

@@ -17,8 +17,7 @@ namespace SysGeSeApp2024.Models.ViewModel
         public int TotalItens { get; set; }
         public sbyte? Status { get; set; }
         public List<FuncaoViewModel>? Funcoes { get; set; }
-
-       
+              
         
        
     }
